@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Person Detection</title>
+    <style>
+        body { 
+            font-family: Arial, sans-serif; 
+            background-color: #f0f0f0; 
+            text-align: center; 
+            padding: 50px; 
+        }
+        .upload-form { 
+            background-color: #fff; 
+            padding: 20px; 
+            border-radius: 5px; 
+            display: inline-block; 
+            box-shadow: 0 0 10px rgba(0,0,0,0.1); 
+            margin: 20px;
+        }
+        input[type=file] { 
+            margin: 10px 0; 
+            padding: 10px; 
+            border: 1px solid #ccc; 
+            border-radius: 5px; 
+            width: 100%; 
+            max-width: 300px; 
+            cursor: pointer; 
+        }
+        input[type=submit] { 
+            padding: 10px 20px; 
+            border: none; 
+            background-color: #28a745; 
+            color: white; 
+            border-radius: 5px; 
+            cursor: pointer; 
+        }
+        input[type=submit]:hover { background-color: #218838; }
+        .flash { color: red; list-style-type: none; }
+        .examples-container {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        .example {
+            cursor: pointer;
+            border: 2px solid transparent;
+            border-radius: 5px;
+            transition: border 0.3s;
+        }
+        .example:hover {
+            border: 2px solid #28a745;
+        }
+        .selected {
+            border: 2px solid #28a745;
+        }
+        .hidden {
+            display: none;
+        }
+    </style>
+    <script>
+        function selectExample(filename) {
+            const examples = document.getElementsByClassName('example');
+            for (let ex of examples) {
+                ex.classList.remove('selected');
+            }
+            document.getElementById(filename).classList.add('selected');
+            document.getElementById('selected_example').value = filename;
+            document.getElementById('image').value = '';
+        }
+
+        function clearExampleSelection() {
+            document.getElementById('selected_example').value = '';
+            const examples = document.getElementsByClassName('example');
+            for (let ex of examples) {
+                ex.classList.remove('selected');
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>Upload an Image for Person Detection</h1>
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <ul class="flash">
+        {% for message in messages %}
+          <li>{{ message }}</li>
+        {% endfor %}
+        </ul>
+      {% endif %}
+    {% endwith %}
+    
+    <div class="upload-form">
+        <form method="post" enctype="multipart/form-data">
+            <input type="file" name="image" id="image" accept="image/*" onchange="clearExampleSelection()">
+            <input type="hidden" name="selected_example" id="selected_example">
+            <br>
+            <p>Or select an example image below:</p>
+            <div class="examples-container">
+                {% for i in range(1,6) %}
+                    <img src="{{ url_for('static', filename='examples/example' ~ i ~ '.jpg') }}" 
+                         alt="Example {{i}}" 
+                         class="example" 
+                         id="example{{i}}.jpg"
+                         onclick="selectExample('example{{i}}.jpg')"
+                         width="150">
+                {% endfor %}
+            </div>
+            <br>
+            <input type="submit" value="Analyze">
+        </form>
+    </div>
+</body>
+</html>

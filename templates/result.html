@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Emotion Detection Result</title>
+    <style>
+        body { 
+            font-family: Arial, sans-serif; 
+            background-color: #f0f0f0; 
+            text-align: center; 
+            padding: 50px; 
+        }
+        .result-container { 
+            background-color: #fff; 
+            padding: 20px; 
+            border-radius: 5px; 
+            display: inline-block; 
+            box-shadow: 0 0 10px rgba(0,0,0,0.1); 
+        }
+        img { max-width: 100%; height: auto; }
+        .images { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
+        .images div { flex: 1 1 300px; }
+        .back-link { 
+            display: inline-block; 
+            margin-top: 20px; 
+            padding: 10px 20px; 
+            background-color: #007bff; 
+            color: white; 
+            text-decoration: none; 
+            border-radius: 5px; 
+        }
+        .back-link:hover { background-color: #0056b3; }
+    </style>
+</head>
+<body>
+    <h1>Emotion Detection Result</h1>
+    <div class="result-container">
+        <div class="images">
+            <div>
+                <h3>Original Image</h3>
+                <img src="data:image/jpeg;base64,{{ original_image }}" alt="Original Image">
+            </div>
+            <div>
+                <h3>Annotated Image</h3>
+                <img src="data:image/jpeg;base64,{{ result_image }}" alt="Annotated Image">
+            </div>
+        </div>
+        <a href="{{ url_for('upload_image') }}" class="back-link">Analyze Another Image</a>
+    </div>
+</body>
+</html>
