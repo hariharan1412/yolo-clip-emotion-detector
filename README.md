@@ -15,10 +15,10 @@ The entire application is containerized with Docker for easy, consistent deploym
 
 Here are a few examples of the model's output.
 
-<p align="center">
+<div align="center">
   <figure style="display:inline-block; margin:10px; text-align:center;">
     <img src="static/results/example3.jpg" width="260"/>
-    <figcaption>Supraised</figcaption>
+    <figcaption>Surprised</figcaption>
   </figure>
   <figure style="display:inline-block; margin:10px; text-align:center;">
     <img src="static/results/example4.jpg" width="260"/>
@@ -28,7 +28,8 @@ Here are a few examples of the model's output.
     <img src="static/results/example5.jpg" width="260"/>
     <figcaption>Sad</figcaption>
   </figure>
-</p>
+</div>
+
 
 
 -----
