@@ -15,22 +15,25 @@ The entire application is containerized with Docker for easy, consistent deploym
 
 Here are a few examples of the model's output.
 
-<div align="center">
-  <figure style="display:inline-block; margin:10px; text-align:center;">
-    <img src="static/results/example3.jpg" width="260"/>
-    <figcaption>Surprised</figcaption>
-  </figure>
-  <figure style="display:inline-block; margin:10px; text-align:center;">
-    <img src="static/results/example4.jpg" width="260"/>
-    <figcaption>Happy</figcaption>
-  </figure>
-  <figure style="display:inline-block; margin:10px; text-align:center;">
-    <img src="static/results/example5.jpg" width="260"/>
-    <figcaption>Sad</figcaption>
-  </figure>
-</div>
-
-
+<table align="center">
+  <tr>
+    <td align="center">
+      <img src="static/results/example3.jpg" width="260"/>
+      <br />
+      <em>Surprised</em>
+    </td>
+    <td align="center">
+      <img src="static/results/example4.jpg" width="260"/>
+      <br />
+      <em>Happy</em>
+    </td>
+    <td align="center">
+      <img src="static/results/example5.jpg" width="260"/>
+      <br />
+      <em>Sad</em>
+    </td>
+  </tr>
+</table>
 
 -----
 
